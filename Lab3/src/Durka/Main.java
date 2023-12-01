@@ -34,8 +34,6 @@ public class Main {
         lab.Erlang_Distribution(4, 2);
         walkToReception.Unif_Distribution(2, 5);
 
-
-        //Dependency injection
         creator.setNextElement(reception);
         reception.setWalkToRegistry(walkToRegistry);
         reception.setRoom(room);

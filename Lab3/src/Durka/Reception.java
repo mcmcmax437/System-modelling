@@ -14,7 +14,7 @@ public class Reception extends Process {
     public void setWalkToRegistry(Process walkToRegistry) {
         this.walkToRegistry = walkToRegistry;
     }
-
+ 
     @Override
     protected double getDelay(Patient patient) {
         switch (patient.getType()) {

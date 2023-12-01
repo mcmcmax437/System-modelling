@@ -8,7 +8,7 @@ public class Main {
     public static int MAX_QUEUE = 3;
     public static double CASHIER1_DELAY = 0.3;
     public static double CASHIER2_DELAY = 0.3;
-    public static double CREATOR_DELAY = 0.1;
+    public static double CREATOR_DELAY = 0.5;
 
     public static int TIME_SIMULATION = 10000;
 
