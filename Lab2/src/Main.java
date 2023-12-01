@@ -2,10 +2,10 @@ import java.util.ArrayList;
 
 public class Main {
     public static int MaxQUEUE= 5;
-    public static int ChannelsNumber = 2;
+    public static int ChannelsNumber = 3;
     public static double SIM_TIME = 1000;
 
-    public static  double Creator_DELAY = 0.5;
+    public static  double Creator_DELAY = 1;
     public static void main(String[] args) {
         //Task1_2();
         //Task3_4_5();
@@ -14,7 +14,7 @@ public class Main {
 
     public static void Task1_2() {
         Create c = new Create(Creator_DELAY, "CREATOR");
-        Process p = new Process(0.1, ChannelsNumber, "PROCESSOR");
+        Process p = new Process(1, ChannelsNumber, "PROCESSOR");
 
         c.setDistribution("exp");
         c.setNextElement(p);
@@ -28,9 +28,9 @@ public class Main {
 
     public static void Task3_4_5() {
         Create creator = new Create(Creator_DELAY, "CREATOR");
-        Process p1 = new Process(10, ChannelsNumber, "PROCESSOR1");
+        Process p1 = new Process(1, ChannelsNumber, "PROCESSOR1");
         Process p2 = new Process(1, ChannelsNumber, "PROCESSOR2");
-        Process p3 = new Process(10, ChannelsNumber, "PROCESSOR3");
+        Process p3 = new Process(1, ChannelsNumber, "PROCESSOR3");
 
         creator.setDistribution("exp");
         creator.setNextElement(p1);

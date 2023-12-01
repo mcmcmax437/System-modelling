@@ -53,6 +53,12 @@ public class Process extends Element {
     }
 
 
+
+
+
+
+
+
     @Override
     public void doStatistics(double delta) {
         this.meanQueue = getMeanQueue() + queue * delta;
