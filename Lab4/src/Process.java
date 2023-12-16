@@ -109,6 +109,8 @@ public class Process extends Element {
         throw new RuntimeException();
     }
 
+
+
     private Element getNextElementByPriority() {
         Collections.sort(nextElements, Comparator.comparingDouble(Pair::getProbabilityOrPriority));
 

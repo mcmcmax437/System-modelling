@@ -23,34 +23,21 @@ public class Model {
                     event = e.getId();
                 }
             }
-
-            //System.out.println("\nНастав час для події в " + elements.get(event).getName() + ", час = " + df.format(tNext));
-
             for (Element e : elements) {
                 e.doStatistics(tNext - tCurrent);
             }
-
             tCurrent = tNext;
-
             for (Element e : elements) {
                 e.setTcurr(tCurrent);
             }
-
             elements.get(event).outAct();
             for (Element e : elements) {
                 if (e.getTnext() == tCurrent) {
                     e.outAct();
                 }
             }
-
-            //printInfo();
         }
         //printResult();
-    }
-    public void printInfo() {
-        for (Element e : elements) {
-            e.printInfo();
-        }
     }
     public void printResult() {
         System.out.println("\n-----------------------RESULTS-----------------------");

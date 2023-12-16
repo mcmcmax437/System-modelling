@@ -4,25 +4,20 @@ import java.util.List;
 
 public class Main {
     public static int SIMUL_TIME = 1000;
-    public static int DELAY = 10;
+    public static int DELAY = 1;
 
-    public static int ITERETIONS = 100;
+    public static int ITERETIONS = 2;
 
 
     public static void main(String[] args) {
 
-        //List<Integer> valuesOfN = new ArrayList<>();
-        //List<Double> simulationTimeModel1 = new ArrayList<>();
-        //List<Double> simulationTimeModel2 = new ArrayList<>();
+       // basic(SIMUL_TIME, ITERETIONS, 50, DELAY);
+       // advanced(SIMUL_TIME, ITERETIONS, 50, DELAY);
+         for (int N = 100; N < 1001; N+=100) {
+               basic(SIMUL_TIME, ITERETIONS, N, DELAY);
+            advanced(SIMUL_TIME, ITERETIONS, N, DELAY);
 
-        for (int N = 100; N < 1001; N+=100) {
-            long avrgSimulTime1 = basic(SIMUL_TIME, ITERETIONS, N, DELAY);
-            long avrgSimulTime2 = advanced(SIMUL_TIME, ITERETIONS, N, DELAY);
-
-           // valuesOfN.add(N);
-           // simulationTimeModel1.add((avrgSimulTime1 / (double) ITERETIONS));
-            //simulationTimeModel2.add(avrgSimulTime2 / (double) ITERETIONS);
-        }
+       }
 
     }
 
@@ -33,14 +28,14 @@ public class Main {
             Element.resetNextId();
             Create creator = new Create("CREATOR", delay);
 
-            Process prevProcessor = new Process("PROCESSOR_#0", delay);
+            Process prevProcessor = new Process("PROCESSOR_(basic)", delay);
             creator.setNextElement(prevProcessor);
 
             ArrayList<Process> listOfProcesses = new ArrayList<>();
             listOfProcesses.add(prevProcessor);
 
             for (int i = 1; i < N; i++) {
-                Process process = new Process("PROCESSOR_Main" + i, delay);
+                Process process = new Process("PROCESSOR_Main(basic)_" + i, delay);
                 listOfProcesses.add(process);
                 prevProcessor.addElement(new Pair(process, 1));
 
@@ -62,14 +57,14 @@ public class Main {
             Element.resetNextId();
             Create creator = new Create("CREATOR", delay);
 
-            Process prevProcessor = new Process("PROCESSOR_#0", delay);
+            Process prevProcessor = new Process("PROCESSOR_(advanced)", delay);
             creator.setNextElement(prevProcessor);
 
             ArrayList<Process> listOfProcesses = new ArrayList<>();
             listOfProcesses.add(prevProcessor);
 
             for (int i = 1; i < N; i++) {
-                Process process = new Process("PROCESSOR_Main" + i, delay);
+                Process process = new Process("PROCESSOR_Main(advanced)_" + i, delay);
                 listOfProcesses.add(process);
                 prevProcessor.addElement(new Pair(process, 1));
 
@@ -92,6 +87,7 @@ public class Main {
         System.out.println("-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/");
         return avrgSimulTime2;
     }
+
 
     private static long measureTime(Runnable runnable) {
         long startTime = System.currentTimeMillis();
